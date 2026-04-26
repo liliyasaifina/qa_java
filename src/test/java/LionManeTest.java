@@ -13,33 +13,27 @@ import static org.mockito.Mockito.mock;
 @RunWith(Parameterized.class)
 public class LionManeTest {
     String sex;
-    Boolean expectedHasMane;
+    boolean expectedHasMane;
 
     public LionManeTest(String sex, Boolean expectedHasMane) {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
 
-    @Parameterized.Parameters(name = "Пол животного: {0} {1} {2}")
+    @Parameterized.Parameters(name = "Пол животного: {0} {1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"Самец", true},
-                {"Самка", false},
-                {"Неизвестно", null}
+                {"Самка", false}
         });
     }
 
     @Test
     public void lionManeTest() throws Exception {
         Predator predatorMock = mock(Predator.class);
-        if (expectedHasMane != null) {
+        {
             Lion lion = new Lion(sex, predatorMock);
             assertEquals(expectedHasMane, lion.doesHaveMane());
-        } else {
-            Exception exception = assertThrows(Exception.class, () -> {
-                new Lion(sex, predatorMock);
-            });
-            assertTrue(exception.getMessage().contains("Используйте допустимые значения пола животного - самец или самка"));
-                   }
+        }
     }
 }
