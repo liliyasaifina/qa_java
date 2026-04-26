@@ -15,7 +15,7 @@ public class LionManeTest {
     String sex;
     boolean expectedHasMane;
 
-    public LionManeTest(String sex, Boolean expectedHasMane) {
+    public LionManeTest(String sex, boolean expectedHasMane) {
         this.sex = sex;
         this.expectedHasMane = expectedHasMane;
     }
